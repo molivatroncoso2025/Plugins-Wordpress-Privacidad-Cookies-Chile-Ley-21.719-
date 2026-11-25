@@ -1,0 +1,895 @@
+/* ==========================================================================
+   Rotar Privacidad & Cookies Chile (Ley N° 21.719) — Frontend Styles
+   Cumple criterios de simetría visual y accesibilidad WCAG
+   ========================================================================== */
+
+.rpc-banner,
+.rpc-modal-backdrop,
+.rpc-floating-btn,
+.rpc-iframe-placeholder,
+.rpc-arsop-box {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Outfit, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.rpc-banner *,
+.rpc-modal-backdrop *,
+.rpc-arsop-box * {
+    box-sizing: border-box;
+}
+
+/* ── Banner Principal (z-index equilibrado para convivir con widgets de LiveChat / WhatsApp) ── */
+.rpc-banner {
+    position: fixed;
+    z-index: 99990;
+    background: var(--rpc-bg, #ffffff);
+    color: var(--rpc-text, #1e293b);
+    box-shadow: 0 -8px 32px rgba(0, 53, 85, 0.20);
+    border-top: 4px solid var(--rpc-primary, #0B4268);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.rpc-banner[hidden],
+.rpc-modal-backdrop[hidden],
+.rpc-floating-btn[hidden] {
+    display: none !important;
+}
+
+/* Layouts disponibles */
+.rpc-layout-bar_bottom {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 18px 24px;
+}
+
+.rpc-layout-box_left {
+    left: 20px;
+    bottom: 20px;
+    max-width: 460px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-top: 4px solid var(--rpc-accent, #00AEEF);
+    padding: 22px;
+    box-shadow: 0 16px 40px rgba(10, 25, 47, 0.24);
+}
+
+.rpc-layout-box_right {
+    right: 20px;
+    bottom: 20px;
+    max-width: 460px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-top: 4px solid var(--rpc-accent, #00AEEF);
+    padding: 22px;
+    box-shadow: 0 16px 40px rgba(10, 25, 47, 0.24);
+}
+
+.rpc-layout-modal_center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: calc(100% - 32px);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 24px 64px rgba(10, 25, 47, 0.38);
+}
+
+.rpc-banner-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.rpc-layout-box_left .rpc-banner-inner,
+.rpc-layout-box_right .rpc-banner-inner,
+.rpc-layout-modal_center .rpc-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+}
+
+.rpc-banner-content {
+    flex: 1 1 auto;
+}
+
+.rpc-banner-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.rpc-shield-icon {
+    font-size: 18px;
+}
+
+.rpc-banner-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--rpc-primary, #0a192f) !important;
+}
+
+.rpc-law-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: rgba(0, 53, 85, 0.10);
+    color: var(--rpc-primary, #003555);
+    border: 1px solid rgba(0, 53, 85, 0.25);
+}
+
+.rpc-banner-text {
+    margin: 0 0 8px 0 !important;
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    color: var(--rpc-text, #334155) !important;
+}
+
+.rpc-banner-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12.5px;
+}
+
+.rpc-banner-links a {
+    color: var(--rpc-primary, #0a192f);
+    text-decoration: underline;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.rpc-banner-links a:hover {
+    opacity: 1;
+    color: var(--rpc-accent, #00AEEF);
+}
+
+/* ── Botones con Simetría Visual Estricta (Ley N° 21.719) ────────────────── */
+.rpc-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.rpc-layout-box_left .rpc-banner-actions,
+.rpc-layout-box_right .rpc-banner-actions,
+.rpc-layout-modal_center .rpc-banner-actions {
+    width: 100%;
+}
+
+.rpc-btn {
+    appearance: none;
+    cursor: pointer;
+    font-family: 'Outfit', 'Montserrat', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 13.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 12px 18px;
+    border-radius: var(--rpc-radius, 6px);
+    border: 2px solid transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.10);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+/* Simetría legal Ley 21.719: Aceptar y Rechazar usan el color corporativo con idéntica jerarquía, tamaño y contraste */
+.rpc-symmetric-btns .rpc-btn-primary,
+.rpc-symmetric-btns .rpc-btn-reject {
+    min-width: 175px;
+    font-size: 13.5px;
+    font-weight: 800;
+    padding: 12px 18px;
+}
+
+.rpc-btn-primary {
+    background: var(--rpc-accent, #0B4268) !important;
+    background-color: var(--rpc-accent, #0B4268) !important;
+    color: #ffffff !important;
+    border-color: var(--rpc-accent, #0B4268) !important;
+}
+
+.rpc-btn-primary:hover {
+    background: var(--rpc-accent-hover, #072d47) !important;
+    background-color: var(--rpc-accent-hover, #072d47) !important;
+    border-color: var(--rpc-accent-hover, #072d47) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.rpc-btn-reject {
+    background: var(--rpc-accent, #0B4268) !important;
+    background-color: var(--rpc-accent, #0B4268) !important;
+    color: #ffffff !important;
+    border-color: var(--rpc-accent, #0B4268) !important;
+}
+
+.rpc-btn-reject:hover {
+    background: var(--rpc-accent-hover, #072d47) !important;
+    background-color: var(--rpc-accent-hover, #072d47) !important;
+    border-color: var(--rpc-accent-hover, #072d47) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.rpc-btn-outline {
+    background: var(--rpc-accent, #0B4268) !important;
+    background-color: var(--rpc-accent, #0B4268) !important;
+    color: #ffffff !important;
+    border-color: var(--rpc-accent, #0B4268) !important;
+}
+
+.rpc-btn-outline:hover {
+    background: var(--rpc-accent-hover, #072d47) !important;
+    background-color: var(--rpc-accent-hover, #072d47) !important;
+    border-color: var(--rpc-accent-hover, #072d47) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Modal de Preferencias Granulares ───────────────────────────────────── */
+.rpc-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483645;
+    background: rgba(10, 25, 47, 0.65);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.rpc-modal-card {
+    background: #ffffff;
+    color: #1e293b;
+    width: 100%;
+    max-width: 740px;
+    max-height: 88vh;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.32);
+}
+
+.rpc-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    background: #f8fafc;
+}
+
+.rpc-modal-header h2 {
+    margin: 0 0 6px 0 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--rpc-primary, #0a192f) !important;
+}
+
+.rpc-modal-subtitle {
+    margin: 0 !important;
+    font-size: 13px !important;
+    color: #475569 !important;
+}
+
+#rpc-modal-close,
+button.rpc-modal-close {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: var(--rpc-accent, #0B4268) !important;
+    background-color: var(--rpc-accent, #0B4268) !important;
+    border: 2px solid var(--rpc-accent, #0B4268) !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease !important;
+}
+
+#rpc-modal-close svg,
+button.rpc-modal-close svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: #ffffff !important;
+    display: block !important;
+}
+
+#rpc-modal-close:hover,
+button.rpc-modal-close:hover,
+#rpc-modal-close:focus,
+button.rpc-modal-close:focus {
+    background: var(--rpc-accent-hover, #072d47) !important;
+    background-color: var(--rpc-accent-hover, #072d47) !important;
+    border-color: var(--rpc-accent-hover, #072d47) !important;
+    color: #ffffff !important;
+    transform: scale(1.06);
+    outline: none !important;
+}
+
+.rpc-modal-body {
+    padding: 18px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.rpc-category-block {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #ffffff;
+}
+
+.rpc-category-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.rpc-category-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.rpc-category-info h3 {
+    margin: 0 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+}
+
+.rpc-cat-count {
+    font-size: 11px;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.rpc-category-info p {
+    margin: 0 !important;
+    font-size: 13px !important;
+    color: #475569 !important;
+}
+
+.rpc-category-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.rpc-badge-always {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #047857;
+    background: #ecfdf5;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #a7f3d0;
+}
+
+/* Toggle Switch */
+.rpc-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.rpc-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rpc-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #cbd5e1;
+    transition: 0.25s;
+    border-radius: 34px;
+}
+
+.rpc-slider::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    transition: 0.25s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.rpc-switch input:checked+.rpc-slider {
+    background-color: var(--rpc-accent, #00AEEF);
+}
+
+.rpc-switch input:checked+.rpc-slider::before {
+    transform: translateX(22px);
+}
+
+/* Detalles técnicos de cookies */
+.rpc-cookie-details {
+    margin-top: 10px;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 8px;
+}
+
+.rpc-cookie-details summary {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--rpc-primary, #0a192f);
+    cursor: pointer;
+}
+
+.rpc-cookie-mini-table-wrap {
+    overflow-x: auto;
+    margin-top: 8px;
+}
+
+.rpc-cookie-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.rpc-cookie-mini-table th,
+.rpc-cookie-mini-table td {
+    padding: 6px 8px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.rpc-cookie-mini-table th {
+    background: #f8fafc;
+    font-weight: 700;
+}
+
+.rpc-audit-receipt {
+    font-size: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.rpc-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ── Botón Flotante de Reapertura (opcional si se activa en ajustes) ────── */
+.rpc-floating-btn {
+    position: fixed !important;
+    bottom: 92px !important;
+    z-index: 2147483620 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--rpc-primary, #003555) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 999px !important;
+    padding: 8px 13px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 53, 85, 0.28) !important;
+    transition: all 0.2s ease;
+    width: auto !important;
+}
+
+.rpc-float-left {
+    left: 18px !important;
+    right: auto !important;
+}
+
+.rpc-float-right {
+    right: 18px !important;
+    left: auto !important;
+}
+
+.rpc-floating-btn .rpc-floating-text {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.25s ease;
+}
+
+.rpc-floating-btn:hover .rpc-floating-text {
+    max-width: 180px;
+}
+
+/* ── Placeholder de Iframes Bloqueados (YouTube / Google Maps) ───────────── */
+.rpc-iframe-wrapper {
+    position: relative;
+    min-height: 260px;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 14px 0;
+}
+
+.rpc-iframe-wrapper iframe[src="about:blank"] {
+    display: none;
+}
+
+.rpc-iframe-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    min-height: 260px;
+    text-align: center;
+    color: #f8fafc;
+}
+
+.rpc-iframe-card {
+    max-width: 440px;
+}
+
+.rpc-iframe-icon {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rpc-iframe-card p {
+    font-size: 13px;
+    color: #cbd5e1;
+    margin: 8px 0 14px;
+}
+
+.rpc-btn-unlock-iframe {
+    background: var(--rpc-accent, #0B4268);
+    color: #ffffff;
+    border: none;
+    padding: 11px 18px;
+    border-radius: var(--rpc-radius, 6px);
+    font-family: 'Outfit', 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.rpc-btn-unlock-iframe:hover {
+    background: var(--rpc-accent-hover, #072d47);
+}
+
+/* ── Shortcode Formulario ARSOP+ / Opt-Out ──────────────────────────────── */
+.rpc-arsop-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.rpc-optout-instant {
+    background: #f8fafc;
+    border-left: 4px solid var(--rpc-accent, #00AEEF);
+    padding: 16px 18px;
+    border-radius: 8px;
+}
+
+.rpc-optout-instant-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.rpc-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.rpc-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1e293b;
+}
+
+.rpc-field input,
+.rpc-field select,
+.rpc-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.rpc-arsop-feedback {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.rpc-arsop-feedback.is-ok {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.rpc-arsop-feedback.is-err {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* ── Desbloqueo de Ancho Completo en WordPress / Hello Elementor (hasta 96vw / 1720px) ── */
+body:has(.rpc-legal-document) .site-main,
+body:has(.rpc-legal-document) .page-content,
+body:has(.rpc-legal-document) .entry-content,
+body.rpc-fullwidth-legal-page .site-main,
+body.rpc-fullwidth-legal-page .page-content,
+body.rpc-fullwidth-legal-page .entry-content {
+    max-width: min(1720px, 96vw) !important;
+    width: min(1720px, 96vw) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: clamp(12px, 1.5vw, 24px) !important;
+    padding-right: clamp(12px, 1.5vw, 24px) !important;
+    box-sizing: border-box !important;
+}
+
+body:has(.rpc-legal-document) .page-header,
+body.rpc-fullwidth-legal-page .page-header {
+    max-width: min(1720px, 96vw) !important;
+    width: min(1720px, 96vw) !important;
+    margin: 24px auto 8px auto !important;
+    padding-left: clamp(12px, 1.5vw, 24px) !important;
+    padding-right: clamp(12px, 1.5vw, 24px) !important;
+    box-sizing: border-box !important;
+}
+
+body:has(.rpc-legal-document) .page-header .entry-title,
+body.rpc-fullwidth-legal-page .page-header .entry-title {
+    max-width: 100% !important;
+    width: 100% !important;
+    color: var(--rpc-primary, #003555) !important;
+    font-family: 'Outfit', 'Montserrat', 'Lato', sans-serif !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ── Maquetación Editorial Ordenada y Justificada para Páginas Legales ──── */
+.rpc-legal-document {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 16px auto 48px auto;
+    padding: clamp(24px, 3vw, 44px) clamp(20px, 3.5vw, 52px);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-top: 4px solid var(--rpc-primary, #003555);
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0, 53, 85, 0.06);
+    color: #1e293b !important;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.75;
+    box-sizing: border-box !important;
+}
+
+.rpc-legal-document .rpc-legal-updated {
+    display: inline-block;
+    background: #f1f5f9;
+    color: var(--rpc-primary, #003555) !important;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13.5px !important;
+    margin-bottom: 20px !important;
+    text-align: left !important;
+}
+
+.rpc-legal-document h2 {
+    color: var(--rpc-primary, #003555) !important;
+    font-family: 'Outfit', 'Montserrat', 'Lato', sans-serif !important;
+    font-size: 21px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    margin: 30px 0 14px 0 !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    text-align: left !important;
+    text-transform: none !important;
+}
+
+.rpc-legal-document h3,
+.rpc-public-cookie-inventory h3 {
+    color: var(--rpc-primary, #003555) !important;
+    font-family: 'Outfit', 'Montserrat', sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin: 24px 0 12px 0 !important;
+    text-align: left !important;
+}
+
+.rpc-legal-document p {
+    color: #334155 !important;
+    font-size: 15.5px !important;
+    line-height: 1.78 !important;
+    margin: 0 0 16px 0 !important;
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* Evitar que el tema convierta los <li> en columnas flex desordenadas */
+.rpc-legal-document ul,
+.rpc-legal-document ul.rpc-legal-list {
+    display: block !important;
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    margin: 0 0 20px 0 !important;
+    padding-left: 26px !important;
+}
+
+.rpc-legal-document ul li,
+.rpc-legal-document ul.rpc-legal-list li {
+    display: list-item !important;
+    color: #334155 !important;
+    font-size: 15.5px !important;
+    line-height: 1.75 !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.rpc-legal-document ul li strong {
+    display: inline !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+}
+
+/* Enlaces claramente visibles dentro de los textos legales */
+.rpc-legal-document a:not(.rpc-btn) {
+    color: var(--rpc-primary, #003555) !important;
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+}
+
+.rpc-legal-document a:not(.rpc-btn):hover {
+    color: var(--rpc-accent, #0B4268) !important;
+}
+
+/* Botón interactivo de reapertura en páginas legales — blindado contra Hello Elementor */
+.rpc-reopen-btn-wrap {
+    margin: 18px 0 24px 0;
+    text-align: left;
+}
+
+button.rpc-inline-reopen-btn,
+.rpc-legal-document button.rpc-inline-reopen-btn {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    background: var(--rpc-accent, #0B4268) !important;
+    background-color: var(--rpc-accent, #0B4268) !important;
+    color: #ffffff !important;
+    border: 2px solid var(--rpc-accent, #0B4268) !important;
+    padding: 12px 22px !important;
+    border-radius: var(--rpc-radius, 6px) !important;
+    font-family: 'Outfit', 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.4px !important;
+    line-height: 1.3 !important;
+    cursor: pointer !important;
+    box-shadow: 0 3px 10px rgba(11, 66, 104, 0.28) !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease !important;
+    width: auto !important;
+    white-space: normal !important;
+}
+
+button.rpc-inline-reopen-btn span,
+button.rpc-inline-reopen-btn .rpc-btn-cookie-label {
+    color: #ffffff !important;
+    display: inline-block !important;
+}
+
+button.rpc-inline-reopen-btn:hover,
+button.rpc-inline-reopen-btn:focus {
+    background: var(--rpc-accent-hover, #072d47) !important;
+    background-color: var(--rpc-accent-hover, #072d47) !important;
+    border-color: var(--rpc-accent-hover, #072d47) !important;
+    color: #ffffff !important;
+    outline: none !important;
+}
+
+@media (max-width: 767px) {
+    .rpc-legal-document {
+        padding: 20px 18px;
+        margin: 14px auto 32px auto;
+    }
+
+    .rpc-legal-document p,
+    .rpc-legal-document ul li {
+        text-align: left !important;
+    }
+}
+
+/* ── Responsive Móvil ───────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+    .rpc-banner-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .rpc-banner-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .rpc-banner-actions .rpc-btn,
+    .rpc-modal-footer .rpc-btn {
+        width: 100%;
+    }
+
+    .rpc-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
